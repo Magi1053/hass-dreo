@@ -64,6 +64,14 @@ class PyDreoHumidifier(PyDreoBaseDevice):
         self._modes = device_definition.preset_modes
         if (self._modes is None):
             self._modes = self.parse_modes(details)
+        if (self._modes is None):
+            # Fallback when API does not provide modes: manual=0, auto=1, sleep=2
+            self._modes = [
+                (MODE_MANUAL, 0),
+                (MODE_AUTO, 1),
+                (MODE_SLEEP, 2),
+            ]
+            _LOGGER.debug("parse_modes: Using default humidifier modes - %s", self._modes)
 
         self._mode = None
         self._mute_on = None

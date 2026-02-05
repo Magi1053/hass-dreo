@@ -201,6 +201,12 @@ PRESET_ECO = "eco"
 # Device is running in sleep mode
 PRESET_SLEEP = "sleep"
 
+# Humidifier mode values from API: manual=0, auto=1, sleep=2
+class HumidifierMode(IntEnum):
+    """Humidifier mode values from API."""
+    MANUAL = 0
+    AUTO = 1
+    SLEEP = 2
 
 PRESET_MODE_STRINGS = {
     "device_fans_mode_straight": "normal",
